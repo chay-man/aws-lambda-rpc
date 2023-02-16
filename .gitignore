@@ -5,6 +5,9 @@
 *.so
 *.dylib
 
+.idea/
+aws-lambda-rpc
+
 # Test binary, built with `go test -c`
 *.test
 
