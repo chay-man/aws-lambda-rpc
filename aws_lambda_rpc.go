@@ -7,12 +7,13 @@ import (
 	"log"
 	"net/rpc"
 	"os"
+	"time"
 )
 
 var (
 	host    = flag.String("h", "localhost", "The ip the lambda is running on. This must match the environment variable AWS_LAMBDA_RUNTIME_API")
 	port    = flag.Int("p", 8080, "The port the lambda is listening to. This must match the environment variable _LAMBDA_SERVER_PORT")
-	timeout = flag.Int64("t", 300, "The time to wait until sending the done signal to the context")
+	timeout = flag.Int64("t", 86400, "The time to wait until sending the done signal to the context. Default is 1 day")
 	data    = flag.String("f", "", "The data to send in the InvokeRequest. Must be valid json")
 )
 
@@ -43,7 +44,7 @@ func Invoke(bytes []byte) error {
 	req := messages.InvokeRequest{
 		Payload: bytes,
 		Deadline: messages.InvokeRequest_Timestamp{
-			Seconds: *timeout,
+			Seconds: time.Now().Unix() + *timeout,
 		},
 	}
 
