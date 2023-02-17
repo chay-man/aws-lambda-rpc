@@ -1,4 +1,4 @@
-module aws-lambda-rpc
+module github.com/chay-man/aws-lambda-rpc
 
 go 1.19
 
