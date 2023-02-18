@@ -12,7 +12,7 @@ aws-lambda-rpc -f path/to/my/file.json
 ```
 
 All other arguments are optional. --help shows all arguments. Example:
-```shell
+```
 aws-lambda-rpc --help
 Usage of ./aws-lambda-rpc:
   -debug
